@@ -213,7 +213,7 @@ const SignUp = () => {
         </CardContent>
         <CardActions sx={{ display: "flex", justifyContent: "flex-end", padding: "15px" }}>
           <Link to="/">
-            <Button variant="outlined">Home</Button>
+            <Button sx={{ color: "#fff" }}>Home</Button>
           </Link>
           <Button variant="contained" onClick={() => onSignUp()}>
             Sign up
