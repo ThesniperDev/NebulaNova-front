@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { signup } from "../../services/auth";
 import "./SignUp.css";
 
-import { Box, Button, Card, CardActions, CardContent, CardHeader, Icon, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
+import { Box, Button, Card, CardActions, CardContent, CardHeader, Icon, IconButton, InputAdornment, TextField } from "@mui/material";
 import { AccountCircleOutlined, EmailOutlined, LockOutlined, VisibilityOffOutlined, VisibilityOutlined, Info } from "@mui/icons-material";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -76,15 +76,16 @@ const SignUp = () => {
 
   return (
     <Box sx={{ width: "100vw", height: "100vh", backgroundColor: "primary.bg", display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <Card sx={{ maxWidth: "500px", textAlign: "center", backgroundColor: "third.main", color: "#fff" }} raised>
+      <Card sx={{ maxWidth: "500px", textAlign: "center", backgroundColor: "secondary.main", color: "#fff" }} raised>
         <CardHeader title="Create your account" />
-        <Typography>{errorMessage}</Typography>
+        <p className={errorMessage ? "errMsg" : "offscreen"}>{errorMessage}</p>
         <CardContent>
           <TextField
             label="Username"
             fullWidth
             margin="normal"
             InputProps={{
+              style: { color: "#fff", borderColor: "#fff" },
               startAdornment: (
                 <InputAdornment>
                   <Icon>
@@ -94,22 +95,28 @@ const SignUp = () => {
               ),
             }}
             onChange={(e) => setUserName(e.target.value)}
+            InputLabelProps={{
+              style: { color: "rgb(255, 255, 255, 0.7)" },
+            }}
           />
-          <p className={userName && !validUser ? "instructions" : "offscreen"}>
+          <div className={userName && !validUser ? "instructions" : "offscreen"}>
             <Icon>
-              <Info />
+              <Info fontSize="small" />
             </Icon>
-            From 4 to 24 characters.
-            <br />
-            It must start with a letter.
-            <br />
-            Letters, numbers, and special characters allowed.
-          </p>
+            <p className="p-instructions">
+              From 4 to 24 characters.
+              <br />
+              It must start with a letter.
+              <br />
+              Letters, numbers, and special characters allowed.
+            </p>
+          </div>
           <TextField
             label="Email"
             fullWidth
             margin="normal"
             InputProps={{
+              style: { color: "#fff" },
               startAdornment: (
                 <InputAdornment>
                   <Icon>
@@ -119,22 +126,28 @@ const SignUp = () => {
               ),
             }}
             onChange={(e) => setEmail(e.target.value)}
+            InputLabelProps={{
+              style: { color: "rgb(255, 255, 255, 0.7)" },
+            }}
           />
-          <p className={email && !validEmail ? "instructions" : "offscreen"}>
+          <div className={email && !validEmail ? "instructions" : "offscreen"}>
             <Icon>
-              <Info />
+              <Info fontSize="small" />
             </Icon>
-            Gmail and Hotmail emails are allowed.
-            <br />
-            Must be .es or .com: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span>{" "}
-            <span aria-label="percent">%</span>
-          </p>
+            <p className="p-instructions">
+              Gmail and Hotmail emails are allowed.
+              <br />
+              Must be .es or .com: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span>{" "}
+              <span aria-label="percent">%</span>
+            </p>
+          </div>
           <TextField
             label="Password"
             type={visible ? "text" : "password"}
             fullWidth
             margin="normal"
             InputProps={{
+              style: { color: "#fff" },
               startAdornment: (
                 <InputAdornment>
                   <Icon>
@@ -149,24 +162,30 @@ const SignUp = () => {
               ),
             }}
             onChange={(e) => setPassword(e.target.value)}
+            InputLabelProps={{
+              style: { color: "rgb(255, 255, 255, 0.7)" },
+            }}
           />
-          <p className={password && !validPwd ? "instructions" : "offscreen"}>
+          <div className={password && !validPwd ? "instructions" : "offscreen"}>
             <Icon>
-              <Info />
+              <Info fontSize="small" />
             </Icon>
-            From 8 to 24 characters.
-            <br />
-            Must include uppercase and lowercase letters, and at least one number.
-            <br />
-            Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span>{" "}
-            <span aria-label="percent">%</span>
-          </p>
+            <p className="p-instructions">
+              From 8 to 24 characters.
+              <br />
+              Must include uppercase and lowercase letters, and at least one number.
+              <br />
+              Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span>{" "}
+              <span aria-label="percent">%</span>
+            </p>
+          </div>
           <TextField
             label="Confirm Password"
             type={visible2 ? "text" : "password"}
             fullWidth
             margin="normal"
             InputProps={{
+              style: { color: "#fff" },
               startAdornment: (
                 <InputAdornment>
                   <Icon>
@@ -181,19 +200,20 @@ const SignUp = () => {
               ),
             }}
             onChange={(e) => setMatchPwd(e.target.value)}
+            InputLabelProps={{
+              style: { color: "rgb(255, 255, 255, 0.7)" },
+            }}
           />
-          <p className={matchPwd && !validMatch ? "instructions" : "offscreen"}>
+          <div className={matchPwd && !validMatch ? "instructions" : "offscreen"}>
             <Icon>
-              <Info />
+              <Info fontSize="small" />
             </Icon>
-            Must match the password field.
-          </p>
+            <p className="p-instructions">Must match the password field.</p>
+          </div>
         </CardContent>
         <CardActions sx={{ display: "flex", justifyContent: "flex-end", padding: "15px" }}>
           <Link to="/">
-            <Button variant="outlined" color="secondary">
-              Home
-            </Button>
+            <Button variant="outlined">Home</Button>
           </Link>
           <Button variant="contained" onClick={() => onSignUp()}>
             Sign up
