@@ -4,7 +4,7 @@ import { signup } from "../../services/auth";
 import "./SignUp.css";
 
 import { Box, Button, Card, CardActions, CardContent, CardHeader, Icon, IconButton, InputAdornment, TextField } from "@mui/material";
-import { AccountCircleOutlined, EmailOutlined, LockOutlined, VisibilityOffOutlined, VisibilityOutlined, Info } from "@mui/icons-material";
+import { AccountCircleOutlined, EmailOutlined, LockOutlined, VisibilityOffOutlined, VisibilityOutlined, Info} from "@mui/icons-material";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
@@ -84,11 +84,13 @@ const SignUp = () => {
             label="Username"
             fullWidth
             margin="normal"
+            className="input-border"
             InputProps={{
-              style: { color: "#fff", borderColor: "#fff" },
+              style : { color: "#fff"},
+              
               startAdornment: (
                 <InputAdornment>
-                  <Icon>
+                  <Icon sx={{ mr: 1}}>
                     <AccountCircleOutlined />
                   </Icon>
                 </InputAdornment>
@@ -100,7 +102,7 @@ const SignUp = () => {
             }}
           />
           <div className={userName && !validUser ? "instructions" : "offscreen"}>
-            <Icon>
+            <Icon sx={{ mr: 1}}>
               <Info fontSize="small" />
             </Icon>
             <p className="p-instructions">
@@ -115,11 +117,12 @@ const SignUp = () => {
             label="Email"
             fullWidth
             margin="normal"
+            className="input-border"
             InputProps={{
               style: { color: "#fff" },
               startAdornment: (
                 <InputAdornment>
-                  <Icon>
+                  <Icon sx={{ mr: 1}}>
                     <EmailOutlined />
                   </Icon>
                 </InputAdornment>
@@ -146,11 +149,12 @@ const SignUp = () => {
             type={visible ? "text" : "password"}
             fullWidth
             margin="normal"
+            className="input-border"
             InputProps={{
               style: { color: "#fff" },
               startAdornment: (
                 <InputAdornment>
-                  <Icon>
+                  <Icon sx={{ mr: 1}}>
                     <LockOutlined />
                   </Icon>
                 </InputAdornment>
@@ -184,11 +188,12 @@ const SignUp = () => {
             type={visible2 ? "text" : "password"}
             fullWidth
             margin="normal"
+            className="input-border"
             InputProps={{
               style: { color: "#fff" },
               startAdornment: (
                 <InputAdornment>
-                  <Icon>
+                  <Icon sx={{ mr: 1}}>
                     <LockOutlined />
                   </Icon>
                 </InputAdornment>
