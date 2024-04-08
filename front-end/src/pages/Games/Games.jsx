@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import './Games.css'
 import { getAllGames } from '../../services/userServices'
+import GameCard from '../../components/GameCard/GameCard'
 
 const Games = () => {
   const [games, setGames] = useState([])
+  const [searchText, setSearchText] = useState('')
 
   const handleGames = async () => {
     const res = await getAllGames()
@@ -15,19 +17,35 @@ const Games = () => {
   },[])
 
   return (
-    <div className='cardGame-container'>
-      {
-        games && games.map((game, idx) => {
-          return (
-          <div key={idx} className='cardGame'>
-            <div className='cardimg-container' style={{backgroundImage: `url(https:${game.image.replace('t_thumb', 't_cover_big')})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}>
-            </div>
-            <p>{game.title}</p>
-          </div>
-          )
-        })
-      }
-    </div>
+    <> 
+      <div className='filter-container'>
+        <input 
+          type="text"
+          className='input-game'
+          placeholder='Search for a game'
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+        <select className='select-game'>
+          <option value='' disabled defaultValue>Elige el grupo muscular</option>
+        </select>
+        <select className='select-game'>
+          <option value='' disabled defaultValue>Elige el grupo muscular</option>
+        </select>
+        <select className='select-game'>
+          <option value='' disabled defaultValue>Elige el grupo muscular</option>
+        </select>
+      </div>
+      <div className='cardGame-container'>
+        {
+          games && games
+                  .filter((game) =>
+                    game.title.toLowerCase().includes(searchText.toLowerCase())
+                  )
+                  .map((game, idx) => <GameCard key={idx} game={game} />)
+        }
+      </div>
+    </>
   )
 }
 
