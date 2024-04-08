@@ -1,0 +1,11 @@
+.wrapper-reviewsList {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+
+}
+
+.description {
+    overflow: scroll;
+    font-size: 10px;
+}
