@@ -1,0 +1,40 @@
+.cardGame-container {
+  width: 80%;
+  padding-bottom: 100px;
+  padding-top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 40px;
+  row-gap: 40px;
+}
+
+.filter-container {
+  margin-top: 70px;
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.input-game {
+  width: 290px;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 15px ;
+  background-color: rgb(18, 34, 63);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.select-game {
+  border: none;
+  border-radius: 0.5rem;
+  width: 290px;
+  padding: 15px ;
+  background-color: rgb(18, 34, 63);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input-game::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}

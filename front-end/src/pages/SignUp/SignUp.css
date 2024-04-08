@@ -1,0 +1,71 @@
+.instructions {
+  font-size: 0.75rem;
+  text-align: left;
+  border-radius: 0.5rem;
+  background: #0a1424;
+  color: #fff;
+  padding: 0.5rem;
+  animation: fade 0.5s ease;
+  display: flex;
+  align-items: center;
+}
+
+.instructions > span {
+  width: max-content;
+  height: max-content;
+  display: flex;
+}
+
+.p-instructions {
+  padding-left: 6px;
+}
+
+.offscreen {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.errMsg {
+  background-color: #f44336;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  height: 40px;
+  width: 90%;
+}
+
+svg {
+  color: #fff;
+}
+
+.input-border .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: rgb(255, 255, 255, 0.5);
+}
+
+.input-border .MuiOutlinedInput-root:active .MuiOutlinedInput-notchedOutline {
+  border-color: #fff;
+}
+
+.input-border .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgb(255, 255, 255, 0.7);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

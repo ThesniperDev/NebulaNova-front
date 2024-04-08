@@ -4,7 +4,8 @@ const customTheme = createTheme({
   palette: {
     primary: {
       main: "#2A2D33",
-      bg: "#0A1424"
+      bg: "#0A1424",
+      letter: "#fff"
     },
     secondary: {
       main: "#353941",
