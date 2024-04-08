@@ -1,0 +1,11 @@
+.input-border .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: rgb(255, 255, 255, 0.5);
+}
+
+.input-border .MuiOutlinedInput-root:active .MuiOutlinedInput-notchedOutline {
+  border-color: #fff;
+}
+
+.input-border .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgb(255, 255, 255, 0.7);
+}

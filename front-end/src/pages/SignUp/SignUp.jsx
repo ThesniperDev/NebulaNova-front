@@ -87,7 +87,6 @@ const SignUp = () => {
             className="input-border"
             InputProps={{
               style : { color: "#fff"},
-              
               startAdornment: (
                 <InputAdornment>
                   <Icon sx={{ mr: 1}}>
