@@ -6,11 +6,15 @@ import Header from "../components/Header/Header";
 const MainLayout = () => {
   return (
     <>
-      <Header />
+      <header>
+        <Header />
+      </header>
       <main>
         <Outlet />
       </main>
-      <Footer />
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 };
