@@ -1,6 +1,14 @@
 .img {
     width: 75px;
-    justify-content: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding-left: 5px;
     margin-left: 5px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;  
+    justify-content: center; 
 }
