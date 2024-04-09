@@ -14,7 +14,6 @@ import PropTypes from "prop-types";
 const PostCard = ({ review }) => {
   const date = new Date(review.updatedAt);
   const formattedDate = date.toLocaleDateString();
-  console.log();
   return (
     <>
       <Container

@@ -7,6 +7,5 @@ export const getAllGames = async () => {
 
 export const getAllReview = async () => {
   const  { data } = await gamesApi.get ('/review/game')
-  console.log(data)
   return data
 }
