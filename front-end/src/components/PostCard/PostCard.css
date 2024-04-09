@@ -3,9 +3,8 @@
     margin:0 !important;
 }
 .review-container:hover {
-    -webkit-box-shadow: 3px 6px 61px 0px rgba(18,29,250,1);
-    -moz-box-shadow: 3px 6px 61px 0px rgba(18,29,250,1);
-    box-shadow: 3px 6px 61px 0px rgba(18,29,250,1);
+    /*border: 5px solid #2A2D33;*/
+    scale: 1.005;
 }
 
 .description {
