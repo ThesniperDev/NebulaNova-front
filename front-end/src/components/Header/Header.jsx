@@ -113,7 +113,7 @@ function ResponsiveAppBar() {
             <img src='https://media.discordapp.net/attachments/1214207531409473588/1226834656549408778/logooo.png?ex=662635cf&is=6613c0cf&hm=7b93a80e55d73bf74f809479bdfab05ed5979823cf11c4adc440dbba830fb060&=&format=webp&quality=lossless' className='img'/>
             NebulaNova
           </Typography>
-          <Box sx={{ flexGrow: 1, padding: '10px 0', display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, padding: '10px 0', marginRight: '260.05px', display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
             {pages.map((page) => (
               <Button variant='h1'
                 key={page}
@@ -125,7 +125,7 @@ function ResponsiveAppBar() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <AccountCircleIcon fontSize='large' sx={{ color: 'white' }}/>
