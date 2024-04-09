@@ -26,15 +26,6 @@ const Games = () => {
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
-        <select className='select-game'>
-          <option value='' disabled defaultValue>Elige el grupo muscular</option>
-        </select>
-        <select className='select-game'>
-          <option value='' disabled defaultValue>Elige el grupo muscular</option>
-        </select>
-        <select className='select-game'>
-          <option value='' disabled defaultValue>Elige el grupo muscular</option>
-        </select>
       </div>
       <div className='cardGame-container'>
         {
