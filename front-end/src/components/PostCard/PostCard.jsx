@@ -37,9 +37,13 @@ const PostCard = ({ review }) => {
                 className="stars-color"
               />
             </Box>
-            <Box sx={{ maxHeight: 100 }}>
-              <h6>Description:</h6>
+            <Box>
+              <h5>Description:</h5>
               <div className="description">{review.description} </div>
+            </Box>
+            <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent:"space-between"} }>
+              <span><strong>Autor: </strong>{review.user.userName}</span>
+              <span><strong>Created: </strong>{review.updatedAt}</span>
             </Box>
           </CardContent>
         </Card>
