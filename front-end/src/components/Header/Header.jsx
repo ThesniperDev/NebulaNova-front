@@ -1,59 +1,60 @@
 import './Header.css'
 
-import { useState } from 'react'
-
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
-  Menu as CardMenu,
-  MenuItem
-} from '@mui/material'
-
-import { Menu as MenuIcon } from '@mui/icons-material'
+import React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Button, Card, CardContent, CardActions, Menu, MenuItem } from '@mui/material';
 
 const Header = () => {
-  const [anchorEl, setAnchorEl] = useState(null)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget)
-    setIsMenuOpen(true)
-  }
+    setAnchorEl(event.currentTarget);
+  };
 
   const handleClose = () => {
-    setAnchorEl(null)
-    setIsMenuOpen(false)
-  }
+    setAnchorEl(null);
+  };
 
   return (
-    <AppBar position="static" color="secondary">
-      <Toolbar variant="dense" sx={{ display: 'flex' }}>
+    <AppBar position="static" sx={{ display: 'flex' }}>
+      <Toolbar sx={{ display: 'flex' }}>
         <IconButton
-          onClick={handleClick}
+          size="large"
           edge="start"
           color="inherit"
           aria-label="menu"
-          sx={{ mr: 10, display: 'flex-start' }}
+          sx={{ display: 'flex' }}
+          aria-controls="simple-menu"
+          aria-haspopup="true"
+          onClick={handleClick}
         >
-          <MenuIcon/>
+          <MenuIcon />
         </IconButton>
-        <CardMenu open={isMenuOpen} anchorEl={anchorEl} onClose={handleClose} sx={{ display: 'flex' }} >
-          <MenuItem>Home</MenuItem>
-          <MenuItem>Games</MenuItem>
-          <MenuItem>Reviews</MenuItem>
-          <Typography sx={{ display: 'flex', justifyContent: 'center', color: 'gray' }}>Account</Typography>
-          <MenuItem>Log In</MenuItem>
-          <MenuItem>Sign Up</MenuItem>
-        </CardMenu>
-        <Typography className='logo' variant='h1' color='white' sx={{ gap: '5px', fontWeight: 'bold', margin: '5px 0' }}>
-        <img src='https://media.discordapp.net/attachments/1214207531409473588/1226834656549408778/logooo.png?ex=662635cf&is=6613c0cf&hm=7b93a80e55d73bf74f809479bdfab05ed5979823cf11c4adc440dbba830fb060&=&format=webp&quality=lossless' className='img'/>
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>Home</MenuItem>
+          <MenuItem onClick={handleClose}>Games</MenuItem>
+          <MenuItem onClick={handleClose}>Reviews</MenuItem>
+          <MenuItem onClick={handleClose}>Log In</MenuItem>
+          <MenuItem onClick={handleClose}>Sign Up</MenuItem>
+        </Menu>
+        <Typography variant="h1" sx={{ flexGrow: 0.97, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px', padding: '5px 0' }}>
+          <img src='https://media.discordapp.net/attachments/1214207531409473588/1226834656549408778/logooo.png?ex=662635cf&is=6613c0cf&hm=7b93a80e55d73bf74f809479bdfab05ed5979823cf11c4adc440dbba830fb060&=&format=webp&quality=lossless' className='img'/>
           NebulaNova
         </Typography>
       </Toolbar>
     </AppBar>
-  )
+  );
 }
+
 
 export default Header
