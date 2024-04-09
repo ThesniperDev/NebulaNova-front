@@ -65,11 +65,11 @@ const SignUp = () => {
       navigate("/");
     } catch (error) {
       if (!error?.response) {
-        setErorrMesage("No hay respuesta del servidor");
+        setErorrMesage("No response from server");
       } else if (error.response?.status === 409) {
-        setErorrMesage("Email o Nombre de usuario cogidos");
+        setErorrMesage("Email or Username already taken");
       } else {
-        setErorrMesage("Registro fallido");
+        setErorrMesage("Failed register");
       }
     }
   };

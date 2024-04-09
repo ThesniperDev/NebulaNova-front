@@ -1,5 +1,5 @@
 import './Header.css'
-
+import { Link } from 'react-router-dom'
 import {
   AppBar,
   Box,
@@ -25,22 +25,24 @@ const Header = () => {
         </Box>
         <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+              <Link key={page} to={page.toLocaleLowerCase()}>
+                <Button
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page}
+                </Button>
+              </Link>
             ))}
           </Box>
           <Box sx={{ flexGrow: 0, display: 'flex', justifyContent: 'flex-end' }}>
             {settings.map((setting) => (
-              <Button
-              key={setting}
-              sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {setting}
-              </Button>
+              <Link key={setting} to={setting.toLowerCase().split(' ').join('')}>
+                <Button
+                sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {setting}
+                </Button>
+              </Link>
             ))}
           </Box>
         </Toolbar>
