@@ -49,14 +49,14 @@ const Footer = () => {
 
   return (
     <>
-      <Box sx={{ display: 'flex', width: '100vw', backgroundColor: 'secondary.main'}}>
+      <Box sx={{ display: 'flex', width: '100vw', backgroundColor: '#2A2D33'}}>
         <Container sx={{ textAlign: 'center', padding: '15px 0'}}>
           <Grid container columnSpacing={2} sx={{ justifyContent: 'space-evenly' }}>
             {generateFooterElements()}
           </Grid>
         </Container>
       </Box>
-      <Box sx={{ textAlign: 'center', backgroundColor: 'secondary.main', paddingBottom: '15px' }}>
+      <Box sx={{ textAlign: 'center', backgroundColor: '#2A2D33', paddingBottom: '15px' }}>
         <Typography sx={{ color: 'white' }}>
           © NebulaNova 2024 - All Rights Reserved
         </Typography>
