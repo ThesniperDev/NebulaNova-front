@@ -11,6 +11,6 @@
     font-size: 16px;
 }
 
-svg {
+.stars-color  svg {
     color: rgb(226, 204, 8) !important;
 }

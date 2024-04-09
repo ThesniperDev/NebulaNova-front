@@ -2,6 +2,7 @@ import "./PostCard.css";
 
 import {
   Box,
+  Button,
   Container,
   Card,
   CardContent,
@@ -90,6 +91,7 @@ const PostCard = ({ review }) => {
             </Box>
           </CardContent>
         </Card>
+        <Button>Hola</Button>
       </Container>
     </>
   );
