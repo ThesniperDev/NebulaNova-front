@@ -45,7 +45,7 @@ const PostCard = ({ review }) => {
               flexDirection: "column",
               justifyContent: "space-between",
               width: "100%",
-              backgroundColor: "secondary.bg",
+              backgroundColor: "secondary.main",
               color: "#fff",
             }}
           >
