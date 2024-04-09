@@ -6,3 +6,15 @@
     padding-left: 5px;
     margin-left: 5px;
 }
+
+@media(min-width: 900px) {
+    .laptop {
+        display: all
+    }
+}
+
+@media(max-width: 899px) {
+    .mobile {
+        display: all
+    }
+}
