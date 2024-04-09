@@ -57,7 +57,7 @@ const PostCard = ({ review }) => {
                 justifyContent: "space-between",
               }}
             >
-              <h3>{review.game && review.game.title}</h3>
+              <h2>{review.game && review.game.title}</h2>
               <Rating
                 name="rating"
                 value={parseInt(review.range)}
@@ -68,7 +68,7 @@ const PostCard = ({ review }) => {
             </Box>
             <Box sx={{ height: "90%", width: "100%", margin: "auto" }}>
               <Box sx={{marginTop: "16px"}}>
-                <h5>Description:</h5>
+                <h4>Review:</h4>
                 <div className="description">{review.description} </div>
               </Box>
             </Box>
@@ -77,7 +77,7 @@ const PostCard = ({ review }) => {
                 display: "flex",
                 flexWrap: "wrap",
                 justifyContent: "space-between",
-                fontSize: 12,
+                fontSize: 14,
               }}
             >
               <span>
