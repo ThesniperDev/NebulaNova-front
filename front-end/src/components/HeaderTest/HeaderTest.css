@@ -1,0 +1,152 @@
+.menu {
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.15);
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-header {
+  width: 100px;
+  height: 90%;
+}
+
+.logo {
+  background-image: url('https://cdn.discordapp.com/attachments/1214207531409473588/1226834656549408778/logooo.png?ex=662635cf&is=6613c0cf&hm=7b93a80e55d73bf74f809479bdfab05ed5979823cf11c4adc440dbba830fb060&');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.menu__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1500px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.menu__links {
+  height: 100%;
+  transition: transform 0.5s;
+  -webkit-transition: transform 0.5s;
+  -moz-transition: transform 0.5s;
+  -ms-transition: transform 0.5s;
+  -o-transition: transform 0.5s;
+  display: flex;
+  margin: 0 auto;
+}
+
+.menu__item {
+  list-style: none;
+  position: relative;
+  height: 100%;
+  --clip: polygon(0 0, 100% 0, 100% 0, 0 0);
+  --transform: rotate(-90deg);
+}
+
+.menu__item:hover {
+  --clip: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  --transform: rotate(0);
+}
+
+.menu__link {
+  text-decoration: none;
+  padding: 0 30px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  color: #fff;
+  font-family: "Poppins";
+}
+
+.menu__link:hover {
+  background-color: #5e7094;
+}
+
+ul li button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.menu__hamburguer {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  cursor: pointer;
+  display: none;
+}
+
+.menu__close {
+  display: flex;
+  height: 100%;
+  padding: 20px;
+  padding-right: 30px;
+  justify-content: flex-end;
+}
+
+.menu__img {
+  display: block;
+  width: 36px;
+}
+
+@media (max-width: 800px) {
+  /* navBar */
+  .menu__hamburguer {
+    display: flex;
+  }
+
+  .menu__item {
+    --clip: 0;
+    overflow: hidden;
+  }
+
+  .menu__item--active {
+    --transform: rotate(0);
+    --background: #798499;
+  }
+
+  .menu__item--show {
+    background-color: var(--background);
+  }
+  .menu__links {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    bottom: 0;
+    right: 0;
+    background-color: #000;
+    overflow-y: auto;
+    display: grid;
+    grid-auto-rows: max-content;
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+  }
+
+  .menu__links--show {
+    transform: unset;
+    -webkit-transform: unset;
+    -moz-transform: unset;
+    -ms-transform: unset;
+    -o-transform: unset;
+    width: 100%;
+    background-color: #171717;
+  }
+
+  .menu__link {
+    padding: 25px 0;
+    padding-left: 30px;
+    height: auto;
+  }
+  .menu__imgcl {
+    cursor: pointer;
+  }
+}

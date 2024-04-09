@@ -2,15 +2,14 @@ import { Outlet } from "react-router-dom";
 
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
-/* import HeaderTest from '../components/HeaderTest/HeaderTest' */
 
-const MainLayout = () => {
+const UserLayout = () => {
   return (
     <>
       <header>
         <Header />
       </header>
-      <main className="main-container">
+      <main className="user-layout">
         <Outlet />
       </main>
       <footer>
@@ -20,4 +19,4 @@ const MainLayout = () => {
   );
 };
 
-export default MainLayout;
+export default UserLayout;

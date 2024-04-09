@@ -1,0 +1,37 @@
+.collection-container {
+  width: 80%;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  column-gap: 20px;
+}
+
+.searcher-container {
+  background-color: #353941;
+}
+
+.boxGame-container {
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  row-gap: 20px;
+}
+
+.boxGames-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-collection {
+  width: 100%;
+  border: none;
+  padding: 15px ;
+  border: 1mm ridge #171819;;
+  background-color: #353941;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input-collection::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
