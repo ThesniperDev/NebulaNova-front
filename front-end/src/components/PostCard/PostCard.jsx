@@ -9,14 +9,15 @@ const PostCard = ({ review }) => {
   return (
     <>
       <Container
-        sx={{ display: "flex", width: "40vw", justifyContent: "flex-start"}}
-      >
+        sx={{ display: "flex", width: "35vw", minWidth: 360, justifyContent: "flex-start", cursor:"pointer"}} 
+        className="review-container"
+        padding={0}
+        >
         <Card sx={{ width: "100%", display: "flex"}}>
           <CardMedia
             sx={{
-              height: 164,
-              width: 164,
-              backgroundColor: "red",              
+              height: 328,
+              width: 328,          
               backgroundSize: "100% 100%",
               backgroundRepeat: "no-repeat",
             }}
@@ -25,7 +26,7 @@ const PostCard = ({ review }) => {
               review.game.image.replace("t_thumb", "t_cover_big")
             }`}          
           />
-          <CardContent sx={{ width: "100%" }}>
+          <CardContent sx={{ width: "100%", backgroundColor:"secondary.bg", color:"#fff"}}>
             <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent:"space-between"}}>
               <h3>{review.game && review.game.title}</h3>
               <Rating

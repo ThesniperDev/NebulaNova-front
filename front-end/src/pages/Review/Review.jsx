@@ -20,7 +20,7 @@ const Review = () => {
       <div className="filter-container">
         <input
           type="text"
-          className="input-game"
+          className="input-review"
           placeholder="Search for a review"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
@@ -32,7 +32,7 @@ const Review = () => {
             .filter((review) =>
               review.game.title.toLowerCase().includes(searchText.toLowerCase())
             )
-            .map((review) => <PostCard key={review.id} review={review} />)}
+            .map((review) => <PostCard key={review.id} review={review} className="postCard"/>)}
       </div>
     </>
   );

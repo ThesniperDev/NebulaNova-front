@@ -1,3 +1,13 @@
+.review-container{
+    padding: 0 !important;
+    margin:0 !important;
+}
+.review-container:hover {
+    -webkit-box-shadow: 3px 6px 61px 0px rgba(18,29,250,1);
+    -moz-box-shadow: 3px 6px 61px 0px rgba(18,29,250,1);
+    box-shadow: 3px 6px 61px 0px rgba(18,29,250,1);
+}
+
 .description {
     font-size: 12px;
 }
