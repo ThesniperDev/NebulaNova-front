@@ -1,11 +1,11 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
-import UserLayout from "../layouts/UserLayout";
 import Home from "../pages/Home/Home";
 import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
 import Games from "../pages/Games/Games";
 import Collection from "../pages/Collection/Collection";
+import Lists from "../pages/Lists/Lists";
 
 const router = createBrowserRouter([
   {
@@ -18,35 +18,33 @@ const router = createBrowserRouter([
       },
       {
         path: "games",
-        element: <Games />
-      }
+        element: <Games />,
+      },
+      {
+        path: "user/collection",
+        element: <Collection />,
+      },
+      {
+        path: "/user/collection",
+        element: <Lists />,
+      },
     ],
   },
   {
     path: "/signup",
     element: <SignUp />,
-  }, 
+  },
   {
     path: "/login",
     element: <Login />,
     loader: () => {
-      if (!localStorage.getItem('token')) {
-        return null
+      if (!localStorage.getItem("token")) {
+        return null;
       } else {
-        return redirect('/user')
+        return redirect("/");
       }
     },
   },
-  {
-    path: "/user",
-    element: <UserLayout />,
-    children: [
-      {
-        path: "collection",
-        element: <Collection />
-      }
-    ]
-  }
 ]);
 
 export default router;
