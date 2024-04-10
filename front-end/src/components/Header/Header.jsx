@@ -54,9 +54,8 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#353941' }}>
-      <Container sx={{ width: '100%' }}>
-      <Toolbar disableGutters>
+    <AppBar position="static" sx={{ width:'100%', backgroundColor: '#353941' }}>
+      <Toolbar disableGutters sx={{ width: '100% !important' }}>
           <Typography
             variant="h1"
             noWrap
@@ -152,7 +151,7 @@ const Header = () => {
       <Typography
             variant="h1"
             noWrap
-            href="#app-bar-with-responsive-menu"
+            href="#app-bar-with-respon </Container>sive-menu"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -202,7 +201,7 @@ const Header = () => {
             </Menu>
           </Box>
       </Toolbar>
-      </Container>
+     
       </AppBar>
   );
 }
