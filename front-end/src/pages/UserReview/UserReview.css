@@ -1,0 +1,28 @@
+.review-wrapper {
+    width: 70vw;
+    margin: 0 auto;
+    color: #fff !important;
+    display: flex;
+    border: #fff !important;
+}
+
+.title {
+    font-size: 30px;
+}
+
+article {
+    width: 70vw;
+    padding: 16px;
+    text-align: center;
+}
+
+.review {
+    margin-top: 32px;
+}
+
+aside {
+    width: 30%;
+    padding: 16px;
+}
+
+

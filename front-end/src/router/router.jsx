@@ -7,6 +7,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
 import Games from "../pages/Games/Games";
 import Collection from "../pages/Collection/Collection";
+import UserReview from "../pages/UserReview/UserReview";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "collection",
         element: <Collection />
+      },
+      {
+        path: "review/:idGame",
+        element: <UserReview/>
       }
     ]
   }
