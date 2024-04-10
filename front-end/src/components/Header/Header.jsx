@@ -1,32 +1,47 @@
 import './Header.css'
 
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemButton from '@mui/material/ListItemButton';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import CloseIcon from '@mui/icons-material/Close';
+import Slide from '@mui/material/Slide';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import Tooltip from '@mui/material/Tooltip';
 
 
 const pages = ['Home', 'Games', 'Reviews'];
 const settings = ['Log In', 'Sign Up'];
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="right" ref={ref} {...props} />;
+});
+
 const Header = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [open, setOpen] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
+  const handleClickOpen = () => {
+    setOpen(true);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   const handleCloseNavMenu = () => {
@@ -38,9 +53,8 @@ const Header = () => {
   };
 
   return (
-        <AppBar position="static" sx={{ backgroundColor: '#353941' }}>
-        <Container maxWidth="100%" sx={{ marginLeft: 0, marginRight: 0 }}>
-        <Toolbar disableGutters>
+    <AppBar position="static" sx={{ width:'100%', backgroundColor: '#353941' }}>
+      <Toolbar disableGutters sx={{ width: '100% !important' }}>
           <Typography
             variant="h1"
             noWrap
@@ -59,61 +73,6 @@ const Header = () => {
             NebulaNova
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" sx={{ display: 'flex', flexGrow: 1 }}>{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <Typography
-            variant="h1"
-            noWrap
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontWeight: 700,
-              color: 'inherit',
-              textDecoration: 'none',
-              padding: '15px 0',
-              alignItems: 'center',
-              gap: '5px'
-            }}
-          >
-            <img src='https://media.discordapp.net/attachments/1214207531409473588/1226834656549408778/logooo.png?ex=662635cf&is=6613c0cf&hm=7b93a80e55d73bf74f809479bdfab05ed5979823cf11c4adc440dbba830fb060&=&format=webp&quality=lossless' className='img'/>
-            NebulaNova
-          </Typography>
           <Box sx={{ flexGrow: 1, padding: '10px 0', marginRight: '260.05px', display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
             {pages.map((page) => (
               <Button variant='h1'
@@ -126,9 +85,94 @@ const Header = () => {
             ))}
           </Box>
 
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+      <Button onClick={handleClickOpen} sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-start' }} >
+        <IconButton sx={{ color: 'white' }}>
+          <MenuIcon />
+        </IconButton>
+      </Button>
+      <Dialog
+        fullScreen
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Transition}
+      >
+        <AppBar sx={{ position: 'relative' }}>
+          <Toolbar>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="close"
+            >
+              <CloseIcon />
+            </IconButton>
+            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+              Menu
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <List sx={{ backgroundColor: '#353941' }}>
+          <ListItemButton>
+            <ListItemText sx={{ color: 'white' }}
+            primary="Home" 
+            />
+          </ListItemButton>
+          <Divider />
+          <ListItemButton>
+            <ListItemText sx={{ color: 'white' }}
+              primary="Games"
+            />
+          </ListItemButton>
+          <Divider />
+          <ListItemButton>
+            <ListItemText sx={{ color: 'white' }}
+              primary="Reviews"
+            />
+          </ListItemButton>
+          <Divider />
+          <ListItemText sx={{ color: 'white', paddingLeft: '25px', height: '40px', display: 'flex', alignItems: 'center', width: '100%', fontWeight: 'bold'}}
+          primary='ACCOUNT'
+          />
+          <Divider />
+          <ListItemButton>
+            <ListItemText sx={{ color: 'white' }}
+              primary="Log In"
+            />
+          </ListItemButton>
+          <Divider />
+          <ListItemButton>
+            <ListItemText sx={{ color: 'white' }}
+              primary="Sign Up"
+            />
+          </ListItemButton>
+        </List>
+      </Dialog>
+      <Typography
+            variant="h1"
+            noWrap
+            href="#app-bar-with-respon </Container>sive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontWeight: 700,
+              color: 'inherit',
+              textDecoration: 'none',
+              padding: '15px 0',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              gap: '5px'
+            }}
+          >
+            <img src='https://media.discordapp.net/attachments/1214207531409473588/1226834656549408778/logooo.png?ex=662635cf&is=6613c0cf&hm=7b93a80e55d73bf74f809479bdfab05ed5979823cf11c4adc440dbba830fb060&=&format=webp&quality=lossless' className='img'/>
+            NebulaNova
+          </Typography>
+
+
+
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
+            <Tooltip title="Open settings" sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <IconButton onClick={handleOpenUserMenu} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <AccountCircleIcon fontSize='large' sx={{ color: 'white' }}/>
               </IconButton>
             </Tooltip>
@@ -156,9 +200,9 @@ const Header = () => {
             </Menu>
           </Box>
       </Toolbar>
-      </Container>
+     
       </AppBar>
-      
   );
 }
-export default Header;
+
+export default Header
