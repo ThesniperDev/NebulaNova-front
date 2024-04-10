@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react';
 import { addUserGame } from '../../services/loginUserService'
-/* import { useContext } from 'react';
-import NebulaContext from '../../context' */
 import './GameCard.css'
 import {
   Box,
@@ -22,6 +20,8 @@ import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
 
 const GameCard = ({ game }) => {
+  const [gameCollection, setGameCollection] = useState([])
+  const [gameIn, setGameIn] = useState(false)
   const [addGame, setAddGame] = useState(false)
   const [status, setStatus] = useState('')
   const [platform, setPlatform] = useState('')
@@ -36,17 +36,33 @@ const GameCard = ({ game }) => {
     setPlatform('')
   }
 
+  const AddGameToCollection = async () => {
+    try {
+      const res = await addUserGame({ title: game.title, status, platform })
+      setGameCollection(res)
+      setGameIn(true)
+    } catch (error) {
+      if (error?.response === 501) {
+        alert('The game is already in your collection')
+      }
+    }
+  }
+
   return (
     <div className='cardGame'>
       <div className='cardimg-container' style={{backgroundImage: `url(https:${game.image.replace('t_thumb', 't_cover_big')})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}>
       </div>
       <div className='gameData-container'>
         <p className='game-title'>{game.title}</p>
-        <IconButton onClick={handleClickOpen} className='icconButton'>
-          {
-            addGame ? <DoneIcon sx={{ color: '#2e7d32' }}/> : <AddIcon sx={{ color: '#2e7d32' }}/>
-          }
-        </IconButton>
+        { gameIn ?
+            <IconButton>
+              <DoneIcon sx={{ color: '#2e7d32' }}/> 
+            </IconButton>
+          :
+            <IconButton onClick={handleClickOpen} className='icconButton'>
+              <AddIcon sx={{ color: '#2e7d32' }}/>
+            </IconButton>
+        }
         <Dialog
           open={addGame}
           onClose={handleClose}
@@ -54,10 +70,7 @@ const GameCard = ({ game }) => {
             component: 'form',
             onSubmit: (event) => {
               event.preventDefault();
-              const formData = new FormData(event.currentTarget);
-              const formJson = Object.fromEntries(formData.entries());
-              const email = formJson.email;
-              console.log(email);
+              AddGameToCollection()
               handleClose();
             }
           }}
