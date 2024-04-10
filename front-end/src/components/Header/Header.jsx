@@ -96,7 +96,7 @@ const Header = () => {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: 'relative' }}>
+        <AppBar sx={{ position: 'relative', backgroundColor: '#353941' }}>
           <Toolbar>
             <IconButton
               edge="start"
@@ -111,36 +111,36 @@ const Header = () => {
             </Typography>
           </Toolbar>
         </AppBar>
-        <List sx={{ backgroundColor: '#353941' }}>
-          <ListItemButton>
+        <List sx={{ backgroundColor: '#2A2D33', height: '100vh' }}>
+          <ListItemButton sx={{ backgroundColor: '#353941' }}>
             <ListItemText sx={{ color: 'white' }}
             primary="Home" 
             />
           </ListItemButton>
           <Divider />
-          <ListItemButton>
+          <ListItemButton sx={{ backgroundColor: '#353941' }}>
             <ListItemText sx={{ color: 'white' }}
               primary="Games"
             />
           </ListItemButton>
           <Divider />
-          <ListItemButton>
+          <ListItemButton sx={{ backgroundColor: '#353941' }}>
             <ListItemText sx={{ color: 'white' }}
               primary="Reviews"
             />
           </ListItemButton>
           <Divider />
-          <ListItemText sx={{ color: 'white', paddingLeft: '25px', height: '40px', display: 'flex', alignItems: 'center', width: '100%', fontWeight: 'bold'}}
+          <ListItemText sx={{ color: 'white', paddingLeft: '25px', height: '40px', display: 'flex', alignItems: 'center', width: '100%'}}
           primary='ACCOUNT'
           />
           <Divider />
-          <ListItemButton>
+          <ListItemButton sx={{ backgroundColor: '#353941' }}>
             <ListItemText sx={{ color: 'white' }}
               primary="Log In"
             />
           </ListItemButton>
           <Divider />
-          <ListItemButton>
+          <ListItemButton sx={{ backgroundColor: '#353941' }}>
             <ListItemText sx={{ color: 'white' }}
               primary="Sign Up"
             />
