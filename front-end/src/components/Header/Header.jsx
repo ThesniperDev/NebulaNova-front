@@ -14,10 +14,11 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
+
 const pages = ['Home', 'Games', 'Reviews'];
 const settings = ['Log In', 'Sign Up'];
 
-function ResponsiveAppBar() {
+const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -160,4 +161,4 @@ function ResponsiveAppBar() {
       
   );
 }
-export default ResponsiveAppBar;
+export default Header;
