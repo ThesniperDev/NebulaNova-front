@@ -1,0 +1,29 @@
+.reviewList-container {
+    width: 80%;
+    padding-bottom: 100px;
+    padding-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: 40px;
+    row-gap: 40px;
+  }
+  
+  .filter-container {
+    margin-top: 70px;
+    width: 80%;
+    display: flex;
+  }
+  
+  .input-review {
+    width: 100%;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 15px ;
+    background-color: rgb(18, 34, 63);
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .input-review::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+  }
