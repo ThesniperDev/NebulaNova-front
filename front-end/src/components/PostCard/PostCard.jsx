@@ -2,7 +2,6 @@ import "./PostCard.css";
 
 import {
   Box,
-  Button,
   Container,
   Card,
   CardContent,
@@ -20,7 +19,7 @@ const PostCard = ({ review }) => {
       <Container
         sx={{
           display: "flex",
-          width: "35vw",
+          width: "30vw",
           minWidth: 360,
           justifyContent: "flex-start",
           cursor: "pointer",
@@ -91,7 +90,6 @@ const PostCard = ({ review }) => {
             </Box>
           </CardContent>
         </Card>
-        <Button>Hola</Button>
       </Container>
     </>
   );
