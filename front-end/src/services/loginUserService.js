@@ -15,6 +15,14 @@ export const addUserGame = async (gamedata) => {
       'Authorization': localStorage.getItem('token')
     }
   })
-  console.log(data)
+  return data
+}
+
+export const updateUserGame = async ({gameId, gamedata}) => {
+  const { data } = await gamesApi.put(`/gamecollection/${gameId}`, gamedata, {
+    headers: {
+      'Authorization': localStorage.getItem('token')
+    }
+  })
   return data
 }

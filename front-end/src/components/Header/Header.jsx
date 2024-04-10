@@ -1,4 +1,5 @@
 import './Header.css'
+import { Link } from 'react-router-dom'
 
 import * as React from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -53,7 +54,7 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ width:'100%', backgroundColor: '#353941' }}>
+    <AppBar position="static" sx={{ width:'100%', backgroundColor: '#353941', padding: "0 15px" }}>
       <Toolbar disableGutters sx={{ width: '100% !important' }}>
           <Typography
             variant="h1"
@@ -75,13 +76,14 @@ const Header = () => {
 
           <Box sx={{ flexGrow: 1, padding: '10px 0', marginRight: '260.05px', display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
             {pages.map((page) => (
-              <Button variant='h1'
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+              <Link key={page} to={page.toLocaleLowerCase()}>
+                <Button variant='h1'
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page}
+                </Button>
+              </Link>
             ))}
           </Box>
 
@@ -193,9 +195,11 @@ const Header = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+                <Link key={setting} to={setting.toLocaleLowerCase().split(' ').join('')}>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
