@@ -4,10 +4,18 @@ import {
   Box,
   Card,
   CardMedia,
-  CardContent
+  CardContent,
+  IconButton
 } from '@mui/material'
 
+
+import EditIcon from '@mui/icons-material/Edit';
+import { useNavigate } from "react-router-dom";
+
 const GameBox = ({ game }) => {
+
+  const navigate = useNavigate()
+
   return (
     <Card sx={{ width: "100%", height: "130px" ,display: "flex", margin: "0 auto", backgroundColor:"secondary.main"}}>
       <CardMedia
@@ -32,8 +40,9 @@ const GameBox = ({ game }) => {
             <button className='status-button'>{game.userGame.status.toUpperCase()}</button>
           </Box>
         </Box>
-        <Box>
+        <Box sx={{display:'flex', justifyContent:"space-between", alignItems:"center", marginTop:"38px"}}>
           <p className='genre-text'>{game.genre}</p>
+            <IconButton  onClick={() => navigate(`../../user/review/${game.id}`)} aria-label="edit-review" size="small"> <EditIcon /></IconButton>  
         </Box>
       </CardContent>
     </Card>
