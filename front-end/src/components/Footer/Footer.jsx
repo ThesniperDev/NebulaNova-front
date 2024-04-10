@@ -1,5 +1,3 @@
-import './Footer.css'
-
 import {
   Box,
   Container,
@@ -21,14 +19,14 @@ const Footer = () => {
     },
     {
       header: 'Follow Our Social Networks',
-      links: ['NebulaNova', 'NebulaNova', 'NebulaNova']
+      links: [<InstagramIcon fontSize='medium'/> , <FacebookIcon fontSize='medium'/>, <XIcon fontSize='medium'/>]
     }
 ]
 
   const generateFooterElements = () =>  {
     const footerElements = elements.map((column, i) => {
       return (
-        <Grid item md={3} key={i}>
+        <Grid item md={4} key={i}>
           <Box>
             <Button sx={{color: 'white', fontWeight: 'bold' }}>
               {column.header}
@@ -51,14 +49,14 @@ const Footer = () => {
 
   return (
     <>
-      <Box sx={{ display: 'flex', width: '100vw', backgroundColor: '#353941'}}>
+      <Box sx={{ display: 'flex', width: '100vw', backgroundColor: '#2A2D33'}}>
         <Container sx={{ textAlign: 'center', padding: '15px 0'}}>
           <Grid container columnSpacing={2} sx={{ justifyContent: 'space-evenly' }}>
             {generateFooterElements()}
           </Grid>
         </Container>
       </Box>
-      <Box sx={{ textAlign: 'center', backgroundColor: '#353941', paddingBottom: '15px' }}>
+      <Box sx={{ textAlign: 'center', backgroundColor: '#2A2D33', paddingBottom: '15px' }}>
         <Typography sx={{ color: 'white' }}>
           © NebulaNova 2024 - All Rights Reserved
         </Typography>
