@@ -17,7 +17,7 @@ const Review = () => {
   }, []);
   return (
     <section className="reviews-container">
-      <div className="filter-container">
+      <div className="filter-container-review">
         <input
           type="text"
           className="input-review"
