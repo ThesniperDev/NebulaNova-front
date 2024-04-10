@@ -6,6 +6,15 @@ export const getAllGamesCollection = async () => {
       'Authorization': localStorage.getItem('token')
     }
   })
-  console.log(data)
   return data
 }
+
+export const getOneGameInfo = async (gameid) =>  {
+  const { data } = await gamesApi.get(`/gamecollection/${gameid}`, {
+    headers: {
+      'Authorization': localStorage.getItem('token')
+    }
+  })
+  return data
+}
+
