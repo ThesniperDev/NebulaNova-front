@@ -21,3 +21,8 @@
   color: hsl(42,80%,70%);
   cursor: pointer;
 }
+
+.gameData-container {
+  display: flex;
+  justify-content: space-between;
+}

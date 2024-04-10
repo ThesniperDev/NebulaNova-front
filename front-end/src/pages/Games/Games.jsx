@@ -17,7 +17,7 @@ const Games = () => {
   },[])
 
   return (
-    <> 
+    <section className='gamesPage-container'> 
       <div className='filter-container'>
         <input 
           type="text"
@@ -36,7 +36,7 @@ const Games = () => {
                   .map((game, idx) => <GameCard key={idx} game={game} />)
         }
       </div>
-    </>
+    </section>
   )
 }
 
