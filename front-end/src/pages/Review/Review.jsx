@@ -16,7 +16,7 @@ const Review = () => {
     handleAllReviewList();
   }, []);
   return (
-    <>
+    <section className="reviews-container">
       <div className="filter-container">
         <input
           type="text"
@@ -34,7 +34,7 @@ const Review = () => {
             )
             .map((review) => <PostCard key={review.id} review={review} className="postCard"/>)}
       </div>
-    </>
+    </section>
   );
 };
 
