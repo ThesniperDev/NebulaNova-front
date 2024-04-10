@@ -2,12 +2,10 @@ import './GameBox.css'
 import PropTypes from 'prop-types'
 import {
   Box,
-  Button,
   Card,
   CardMedia,
   CardContent
 } from '@mui/material'
-import { green, blue } from '@mui/material/colors'
 
 const GameBox = ({ game }) => {
   return (
@@ -30,12 +28,12 @@ const GameBox = ({ game }) => {
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <p style={{ fontWeight: "bold" }}>{game.title} </p>
           <Box sx={{ display: "flex", gap: "10px" }}>
-            <Button variant='contained' sx={{ backgroundColor: blue[900] }}>{game.userGame.platform}</Button>
-            <Button variant='contained' sx={{ backgroundColor: green[800] }}>{game.userGame.status}</Button>
+            <button className='platform-button'>{game.userGame.platform.toUpperCase()}</button>
+            <button className='status-button'>{game.userGame.status.toUpperCase()}</button>
           </Box>
         </Box>
         <Box>
-          <p>{game.genre}</p>
+          <p className='genre-text'>{game.genre}</p>
         </Box>
       </CardContent>
     </Card>
