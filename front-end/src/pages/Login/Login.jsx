@@ -29,6 +29,7 @@ const Login = () => {
       const res = await login({ email, password });
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("role", res.data.role);
+      localStorage.setItem("userId", res.data.userId);
       setEmail("");
       setPassword("");
       navigate("/");
