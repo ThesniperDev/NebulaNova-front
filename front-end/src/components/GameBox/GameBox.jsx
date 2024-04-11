@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./GameBox.css";
-import { updateUserGame } from "../../services/loginUserService";
+import { updateUserGame, getAllLists, addGameToList } from "../../services/loginUserService";
 import PropTypes from "prop-types";
 import { Box, Button, Card, CardMedia, CardContent, Dialog, DialogTitle, DialogContent, DialogActions, FormControl, Icon, IconButton, InputLabel, MenuItem, Menu, Select, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -11,15 +11,35 @@ import RemoveIcon from '@mui/icons-material/Remove';
 
 const GameBox = ({ game }) => {
   const [gameUpdate, setGameUpdate] = useState([]);
+  const [lists, setLists] = useState([])
+  const [gameList, setGameList] = useState([])
+  const [listId, setListId] = useState(0)
   const [editGame, setEditGame] = useState(false);
+  const [listAdded, setListAdded] = useState(false)
   const [status, setStatus] = useState("");
   const [platform, setPlatform] = useState("");
+  const [listTitle, setListTitle] = useState("")
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const handleClickOpen = () => {
     setEditGame(true);
   };
+
+  const handleLists = async () => {
+    const res = await getAllLists()
+    setLists(res)
+  }
+
+  const openAddToList = () => {
+    setListAdded(true)
+    handleLists()
+  }
+
+  const closeAddToList = () => {
+    setListAdded(false)
+    handleCloseIcon()
+  }
 
   const handleClose = () => {
     setEditGame(false);
@@ -31,6 +51,19 @@ const GameBox = ({ game }) => {
     try {
       const res = await updateUserGame({ gameId: game.id, gamedata: { status, platform } });
       setGameUpdate(res);
+    } catch (error) {
+      if (error?.response === 501) {
+        alert("The game is already in your collection");
+      }
+    }
+  };
+
+  const AddGameToUserList = async () => {
+    try {
+      console.log(listId)
+      console.log(game.title)
+      const res = await addGameToList({ listId, listgamedata: { title: game.title } });
+      setGameList(res);
     } catch (error) {
       if (error?.response === 501) {
         alert("The game is already in your collection");
@@ -140,12 +173,50 @@ const GameBox = ({ game }) => {
               open={open}
               onClose={handleCloseIcon}
             >
-              <MenuItem onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
+              <MenuItem onClick={openAddToList} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
                 <Icon>
                   <AddIcon />
                 </Icon>
                 <Typography>Add to list</Typography>
               </MenuItem>
+              <Dialog
+                open={listAdded}
+                onClose={closeAddToList}
+                PaperProps={{
+                  component: "form",
+                  onSubmit: (e) => {
+                    e.preventDefault()
+                    AddGameToUserList()
+                    closeAddToList();
+                  },
+                }}
+              >
+                <Box sx={{ display: "flex", backgroundColor: "#2A2D33", justifyContent: "space-between" }}>
+                  <DialogTitle sx={{ backgroundColor: "#2A2D33", color: "#fff" }}>Add Game to List</DialogTitle>
+                  <IconButton onClick={closeAddToList} sx={{ paddingRight: "15px" }}>
+                    <CloseIcon />
+                  </IconButton>
+                </Box>
+                <DialogContent>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Lists</InputLabel>
+                    <Select labelId="demo-simple-select-label" id="demo-simple-select" value={listTitle} label="Age" onChange={(e) => setListTitle(e.target.value)}>
+                      {
+                        lists && lists.map((list, idx) => {
+                          return (
+                            <MenuItem key={idx} value={list.id} onClick={() => setListId(list.id)}>{list.title}</MenuItem>
+                          )
+                        })
+                      }
+                    </Select>
+                  </FormControl>
+                </DialogContent>
+                <DialogActions sx={{ backgroundColor: "#353941", display: "flex", justifyContent: "center" }}>
+                  <Button type="submit" sx={{ color: "#fff", fontWeight: "bold", fontSize: "16px" }}>
+                    Add
+                  </Button>
+                </DialogActions>
+              </Dialog>
               <MenuItem onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
                 <Icon>
                   <RateReviewIcon />
