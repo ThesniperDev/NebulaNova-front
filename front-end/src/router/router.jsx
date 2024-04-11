@@ -7,6 +7,8 @@ import Games from "../pages/Games/Games";
 import Collection from "../pages/Collection/Collection";
 import Lists from "../pages/Lists/Lists";
 import GamesList from "../pages/GamesList/GamesList";
+import UserReview from "../pages/UserReview/UserReview"
+import Review from "../pages/Review/Review"
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "games",
         element: <Games />,
+      },
+      {
+        path: "/reviews",
+        element: <Review />,
       },
       {
         path: "user/collection",
@@ -52,6 +58,10 @@ const router = createBrowserRouter([
           }
         ]
       },
+      {
+        path: "user/review/:idGame",
+        element: <UserReview />
+      }
     ],
   },
   {

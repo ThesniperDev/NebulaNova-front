@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"
 import "./GameBox.css";
 import { updateUserGame, getAllLists, addGameToList } from "../../services/loginUserService";
 import PropTypes from "prop-types";
@@ -21,6 +22,8 @@ const GameBox = ({ game }) => {
   const [listTitle, setListTitle] = useState("")
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+  const navigate = useNavigate()
 
   const handleClickOpen = () => {
     setEditGame(true);
@@ -218,9 +221,9 @@ const GameBox = ({ game }) => {
                 </DialogActions>
               </Dialog>
               <MenuItem onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
-                <Icon>
+                <IconButton onClick={() => navigate(`user/review/${game.id}`)}>
                   <RateReviewIcon />
-                </Icon>
+                </IconButton>
                 <Typography>Add a review</Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
