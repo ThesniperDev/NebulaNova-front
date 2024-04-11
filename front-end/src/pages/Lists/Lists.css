@@ -1,0 +1,40 @@
+.listPage-container {
+  width: 70%;
+  margin: 60px auto;
+}
+
+.formList-container {
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.filterList-container {
+  width: 70%;
+}
+
+.input-lists {
+  width: 100%;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 18px;
+  background-color: rgb(18, 34, 63);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.buttonList-container {
+  width: 20%;
+}
+
+.button-list {
+  padding: 10px;
+  width: 100%;
+  background-color: #486696;
+  border: 1px solid rgb(18, 34, 63);
+  color: rgba(255, 255, 255,0.7);
+}
+
+.button-list:hover {
+  background-color: rgb(52, 78, 118);
+  color: rgba(255, 255, 255,1);
+}
