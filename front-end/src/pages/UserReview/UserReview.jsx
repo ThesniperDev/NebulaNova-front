@@ -13,7 +13,8 @@ const UserReview = () => {
   const [rateValue, setRateValue] = useState(0);
   const userId = localStorage.getItem('userId')
   const [errorText,setErrorText] = useState("")
-  const navigate = useNavigate()
+  const [successText, setSuccessText] = useState("") 
+  const navigate = useNavigate() 
 
   const handleGameInfo = async () => {
     const res = await getOneGameInfo(idGame);
@@ -22,28 +23,25 @@ const UserReview = () => {
 
   const handleSendReview = async () => {
     try {
-      const res = await createReview( review, rateValue, userId, idGame )  
-      //navigate('/')
-      setRateValue(0)
-    } catch (error) {
-      if (!error?.response) {
-        setErrorText("No response from server");
-      } else if (review === '') {
+      if (review.length === 0) {
         setErrorText("Your review is empty");
-      } else {
+      } else  if ( rateValue === 0 ){
         setErrorText("Indicates a rate");
-      }
+      }else {
+        const res = await createReview( review, rateValue, userId, idGame )  
+        //navigate('/')
+        setRateValue(null)
+        setReview("")
+        setSuccessText("Your review has been created successfully")
+      }       
+    } catch (error) {
+      setErrorText(error)
     }
   }
 
   useEffect(() => {
     handleGameInfo();
   }, []);
-
-  
-
-
-  console.log(errorText);
 
   return (
     <section className="review-wrapper">
@@ -54,6 +52,8 @@ const UserReview = () => {
         </div>
         <div className="review">
           <label>Write your review:</label>
+          <p className={ errorText ? "visible error" : "hidden"}>{errorText}</p>
+          <p className={ successText ? "visible success" : "hidden"}>{successText}</p>
           <textarea
             type="text-"
             className="editor"
@@ -66,9 +66,9 @@ const UserReview = () => {
               sx={{ display: "flex", ml: "16px", mt: "10px" }}
               className="stars-color"
               onChange={(e) => {
-                setRateValue(e.target.value);
+                setRateValue(parseInt(e.target.value));
               }}
-              defaultValue={rateValue}
+              value={rateValue}
             />
           </div>
         </div>

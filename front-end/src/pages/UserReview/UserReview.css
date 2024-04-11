@@ -1,6 +1,6 @@
 .review-wrapper {
     width: 70vw;
-    margin: 0 auto;
+    margin: 30px auto;
     color: #fff !important;
     display: flex;
     flex-direction: column;
@@ -95,3 +95,27 @@ aside {
     width: 100%;
     margin-top: 32px;
     height: 50px;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.error {
+  background-color: #f44336;
+}
+
+.success {
+    background-color: #1565c0;
+}
