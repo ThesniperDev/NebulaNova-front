@@ -9,25 +9,6 @@ import AddIcon from '@mui/icons-material/Add';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import RemoveIcon from '@mui/icons-material/Remove';
 
-
-const options = [
-  {
-    id: 1,
-    icon: <AddIcon />,
-    text: 'Add to list'
-  },
-  {
-    id: 1,
-    icon: <RateReviewIcon />,
-    text: 'Add a review'
-  },
-  {
-    id: 1,
-    icon: <RemoveIcon />,
-    text: 'Delete from collection'
-  },
-]
-
 const GameBox = ({ game }) => {
   const [gameUpdate, setGameUpdate] = useState([]);
   const [editGame, setEditGame] = useState(false);
@@ -161,14 +142,24 @@ const GameBox = ({ game }) => {
               open={open}
               onClose={handleCloseIcon}
             >
-              {options.map((option, idx) => (
-                <MenuItem key={idx} onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
-                  <Icon>
-                    {option.icon}
-                  </Icon>
-                  <Typography>{option.text}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
+                <Icon>
+                  <AddIcon />
+                </Icon>
+                <Typography>Add to list</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
+                <Icon>
+                  <RateReviewIcon />
+                </Icon>
+                <Typography>Add a review</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
+                <Icon>
+                  <RemoveIcon />
+                </Icon>
+                <Typography>Delete from collection</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Box>
