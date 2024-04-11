@@ -32,7 +32,7 @@ const Collection = () => {
         </div>
         <div className="gameFilter-container">
           <div className="titleFilter">
-            <h2>Status</h2>
+            <h2>STATUS</h2>
           </div>
         </div>
       </div>
