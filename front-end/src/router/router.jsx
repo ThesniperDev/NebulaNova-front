@@ -25,8 +25,13 @@ const router = createBrowserRouter([
         element: <Collection />,
       },
       {
-        path: "/user/collection",
+        path: "/user/lists",
         element: <Lists />,
+        children: [
+          {
+            path: ":listId"
+          }
+        ]
       },
     ],
   },

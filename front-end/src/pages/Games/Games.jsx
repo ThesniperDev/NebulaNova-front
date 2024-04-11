@@ -20,7 +20,7 @@ const Games = () => {
     <section className='gamesPage-container'> 
       <div className='filter-container'>
         <input 
-          type="text"
+          type='text'
           className='input-game'
           placeholder='Search for a game'
           value={searchText}

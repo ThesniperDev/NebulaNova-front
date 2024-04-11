@@ -26,3 +26,21 @@ export const updateUserGame = async ({gameId, gamedata}) => {
   })
   return data
 }
+
+export const getAllLists = async () => {
+  const { data } = await gamesApi.get('/list/', {
+    headers: {
+      'Authorization': localStorage.getItem('token')
+    }
+  })
+  return data
+}
+
+export const createList = async (listdata) => {
+  const { data } = await gamesApi.post('/list/', listdata, {
+    headers: {
+      'Authorization': localStorage.getItem('token')
+    }
+  })
+  return data
+}
