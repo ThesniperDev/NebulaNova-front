@@ -11,3 +11,8 @@
   color: rgba(255, 255, 255, 0.7);
   font-size: 18px;
 }
+
+.title-list:hover {
+  color: hsl(42,80%,70%);
+  cursor: pointer;
+}

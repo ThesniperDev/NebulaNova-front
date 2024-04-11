@@ -10,9 +10,9 @@
   display: grid;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
-  column-gap: 40px;
+  column-gap: 70px;
   row-gap: 65px;
 }
 

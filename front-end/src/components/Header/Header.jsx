@@ -1,6 +1,6 @@
 import "./Header.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import * as React from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -25,6 +25,7 @@ import Tooltip from "@mui/material/Tooltip";
 const pages = ["Home", "Games", "Reviews"];
 const userPages = ["Profile", "Collection", "Lists"];
 const settings = ["Log In", "Sign Up"];
+const settings2 = "Log Out";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="right" ref={ref} {...props} />;
@@ -33,6 +34,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const navigate = useNavigate()
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -49,6 +52,12 @@ const Header = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const onLogout = () => {
+    localStorage.clear()
+    handleCloseUserMenu()
+    navigate('/games')
+  }
 
   return (
     <AppBar position="static" sx={{ width: "100%", backgroundColor: "#353941", padding: "0 15px" }}>
@@ -178,13 +187,19 @@ const Header = () => {
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}
           >
-            {settings.map((setting) => (
-              <Link key={setting} to={setting.toLocaleLowerCase().split(" ").join("")}>
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              </Link>
-            ))}
+            {localStorage.getItem('token') ?
+              <MenuItem onClick={onLogout}>
+                <Typography textAlign="center">{settings2}</Typography>
+              </MenuItem>
+              :
+              settings.map((setting) => (
+                <Link key={setting} to={setting.toLocaleLowerCase().split(" ").join("")}>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                </Link>
+              )) 
+            }
           </Menu>
         </Box>
       </Toolbar>

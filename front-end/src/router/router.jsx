@@ -24,9 +24,23 @@ const router = createBrowserRouter([
       {
         path: "user/collection",
         element: <Collection />,
+        loader: () => {
+          if (localStorage.getItem("token")) {
+            return null;
+          } else {
+            return redirect("/games");
+          }
+        },
       },
       {
         path: "/user/lists",
+        loader: () => {
+          if (localStorage.getItem("token")) {
+            return null;
+          } else {
+            return redirect("/games");
+          }
+        },
         children: [
           {
             path: "",

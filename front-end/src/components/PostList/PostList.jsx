@@ -22,28 +22,33 @@ const PostList = ({ list }) => {
 
   return (
     <Box sx={{ cursor: "pointer" }}>
-      <Card sx={{ display: "flex" }}>
-        {
-          gamesList && gamesList.map((gameList, idx) => {
-            if (idx < 2) {
-              return(
-                <CardMedia
-                  key={idx}
-                  sx={{
-                    height: 312,
-                    width: 312,
-                    backgroundSize: "100% 100%",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                  image={`https:${
-                    gameList.image.replace("t_thumb", "t_cover_big")
-                  }`}
-                />
-              )
-            }
-          })
-        }
-      </Card>
+      {gamesList.length > 0 ?
+        <Card sx={{ display: "flex", backgroundColor: "#353941"}}>
+          {
+            gamesList && gamesList.map((gameList, idx) => {
+              if (idx < 2) {
+                return(
+                  <CardMedia
+                    key={idx}
+                    sx={{
+                      height: 352,
+                      width: 264,
+                      backgroundSize: "contain",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                    image={`https:${
+                      gameList.image.replace("t_thumb", "t_cover_big")
+                    }`}
+                  />
+                )
+              }
+            })
+          }
+        </Card>
+        :
+        <Card sx={{ width:"100%", height: "352px", backgroundColor: "#353941" }}>
+        </Card>
+      }
         <p className="title-list">{list.title}</p>
     </Box>
   )
