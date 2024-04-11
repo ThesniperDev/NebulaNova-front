@@ -2,15 +2,27 @@ import { useState } from "react";
 import "./GameBox.css";
 import { updateUserGame } from "../../services/loginUserService";
 import PropTypes from "prop-types";
-import { Box, Button, Card, CardMedia, CardContent, Dialog, DialogTitle, DialogContent, DialogActions, FormControl, IconButton, InputLabel, MenuItem, Select } from "@mui/material";
+import { Box, Button, Card, CardMedia, CardContent, Dialog, DialogTitle, DialogContent, DialogActions, FormControl, IconButton, InputLabel, MenuItem, Menu, Select } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import AddIcon from '@mui/icons-material/Add';
+import RateReviewIcon from '@mui/icons-material/RateReview';
+import RemoveIcon from '@mui/icons-material/Remove';
+
+
+const options = [
+  [<AddIcon />, 'Add to list'],
+  [<RateReviewIcon />, 'Add a Review'],
+  [<RemoveIcon />, 'Delete from collection']
+]
 
 const GameBox = ({ game }) => {
   const [gameUpdate, setGameUpdate] = useState([]);
   const [editGame, setEditGame] = useState(false);
   const [status, setStatus] = useState("");
   const [platform, setPlatform] = useState("");
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
 
   const handleClickOpen = () => {
     setEditGame(true);
@@ -32,6 +44,14 @@ const GameBox = ({ game }) => {
       }
     }
   };
+
+  const handleClickIcon = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleCloseIcon = () => {
+    setAnchorEl(null)
+  }
 
   return (
     <Card sx={{ width: "100%", height: "130px", display: "flex", margin: "0 auto", backgroundColor: "secondary.main" }}>
@@ -104,10 +124,32 @@ const GameBox = ({ game }) => {
             <p className="genre-text">{game.genre}</p>
           </Box>
           <Box>
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
-          </Box>
+          <IconButton
+            aria-label="more"
+            id="long-button"
+            aria-controls={open ? 'long-menu' : undefined}
+            aria-expanded={open ? 'true' : undefined}
+            aria-haspopup="true"
+            onClick={handleClickIcon}
+          >
+            <MoreVertIcon />
+          </IconButton>
+        <Menu
+          className="optionsMenu"
+          MenuListProps={{
+            'aria-labelledby': 'long-button',
+          }}
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleCloseIcon}
+        >
+          {options.map((option) => (
+            <MenuItem key={option} onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
+              {option}
+            </MenuItem>
+          ))}
+        </Menu>
+        </Box>
         </Box>
       </CardContent>
     </Card>
