@@ -18,3 +18,4 @@ export const getOneGameInfo = async (gameid) =>  {
   return data
 }
 
+

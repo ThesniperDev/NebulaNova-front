@@ -3,6 +3,7 @@
     margin: 0 auto;
     color: #fff !important;
     display: flex;
+    flex-direction: column;
     border: #fff !important;
 }
 
@@ -11,18 +12,86 @@
 }
 
 article {
-    width: 70vw;
+    width: 100%;
     padding: 16px;
+}
+
+.header {
     text-align: center;
 }
 
 .review {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     margin-top: 32px;
 }
 
-aside {
-    width: 30%;
-    padding: 16px;
+label {
+    margin-bottom: 12px;
+}
+
+.editor {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #fff;
+    color: #fff;
+    background-color: #2A2D33;
+    padding: 8px;
+}
+
+.button-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100px;
+}
+
+.btn-publish,
+.btn-delete {
+    padding: 8px 24px;
+    margin-left: 16px;
+    border: none;
+    color: #fff;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
+.btn-publish {
+    background-color: #1565c0;
+}
+
+.btn-publish :hover {
+    background-color: #1565c0;
+}
+
+.btn-publish:active {
+    background-color: rgba(13, 71, 161, 0.2);
+}
+
+.btn-delete {
+    background-color: #616161;
+}
+
+.btn-delete :hover {
+    background-color: #212121;
+}
+
+.btn-delete:active {
+    background-color: rgba(13, 71, 161, 0.2);
 }
 
 
+aside {
+    width: 100%;
+    padding: 16px;
+}
+
+.game-rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    width: 100%;
+    margin-top: 32px;
+    height: 50px;

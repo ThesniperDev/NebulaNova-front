@@ -2,14 +2,16 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getOneGameInfo } from "../../services/loginUserService";
 
-import { TextField } from "@mui/material";
+import { Rating } from "@mui/material";
 
 import "./UserReview.css";
 
 const UserReview = () => {
   const { idGame } = useParams();
   const [game, setGame] = useState({});
-  const [review, setReview] = useState({});
+  const [review, setReview] = useState("");
+  const [rateValue,setRateValue] = useState("")
+
 
   const handleGameInfo = async () => {
     const res = await getOneGameInfo(idGame);
@@ -21,6 +23,7 @@ const UserReview = () => {
   }, []);
 
   return (
+    
     <section className="review-wrapper">
       <article>
         <div className="header">
@@ -28,19 +31,19 @@ const UserReview = () => {
           <p>{game.title}</p>
         </div>
         <div className="review">
-          <TextField
-            sx={{boxShadow: "0px 0px 4px #fff", color:"#fff !important"}}
-            color="fourth"
-            label="Write your review"
-            placeholder="Plese enter the text"
-            multiline
-            rows={16}
-            margin="dense"
-            fullWidth
-          />
+          <label>Write your review:</label>
+          <textarea type="text-" className="editor" value ={review} onChange={(e) => setReview(e.target.value) }>
+          </textarea>
+          <div className="game-rating">
+            Rate your game:
+            <Rating sx={{display:"flex", ml:"16px", mt:"10px"}} className="stars-color" onChange={(e) => {setRateValue(e.target.value)}}/>
+          </div>
+        </div>
+        <div className="button-wrapper">
+          <button className="btn-publish">Publish</button>
+          <button className="btn-delete" onClick={() => setReview("")}>Delete</button>
         </div>
       </article>
-      <aside></aside>
     </section>
   );
 };
