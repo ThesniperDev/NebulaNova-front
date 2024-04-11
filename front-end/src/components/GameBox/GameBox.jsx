@@ -142,21 +142,21 @@ const GameBox = ({ game }) => {
               open={open}
               onClose={handleCloseIcon}
             >
-              <MenuItem onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
-                <Icon>
-                  <AddIcon />
+              <MenuItem className="items-menu" onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '7px' }}>
+                <Icon sx={{ display: "flex", alignItems: "center" }}>
+                  <AddIcon className="items-icon"/>
                 </Icon>
                 <Typography>Add to list</Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
-                <Icon>
-                  <RateReviewIcon />
+              <MenuItem className="items-menu" onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '7px' }}>
+                <Icon sx={{ display: "flex", alignItems: "center" }}>
+                  <RateReviewIcon className="items-icon"/>
                 </Icon>
                 <Typography>Add a review</Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
-                <Icon>
-                  <RemoveIcon />
+              <MenuItem className="items-menu" onClick={handleCloseIcon} sx={{ display: 'flex', backgroundColor: "#2A2D33", color: "#fff", gap: '7px' }}>
+                <Icon sx={{ display: "flex", alignItems: "center" }}>
+                  <RemoveIcon className="items-icon"/>
                 </Icon>
                 <Typography>Delete from collection</Typography>
               </MenuItem>

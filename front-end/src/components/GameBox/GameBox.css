@@ -53,3 +53,11 @@
 .genre-text {
   color: rgba(255, 255, 255, 0.8);
 }
+
+.items-menu:hover {
+  color: #486696;
+}
+
+.items-icon:hover {
+  color: #486696
+}
