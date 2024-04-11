@@ -24,6 +24,8 @@ const GameBox = ({ game }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
+
+
   const handleClickOpen = () => {
     setEditGame(true);
   };
@@ -135,7 +137,11 @@ const GameBox = ({ game }) => {
             <MoreVertIcon />
           </IconButton>
         <Menu
-          className="optionsMenu"
+        sx={
+          { "& .MuiMenu-paper": 
+            { backgroundColor: "#2A2D33", }, 
+          }
+        }
           MenuListProps={{
             'aria-labelledby': 'long-button',
           }}
@@ -144,7 +150,7 @@ const GameBox = ({ game }) => {
           onClose={handleCloseIcon}
         >
           {options.map((option) => (
-            <MenuItem key={option} onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
+            <MenuItem className="menu-items" key={option} onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
               {option}
             </MenuItem>
           ))}
