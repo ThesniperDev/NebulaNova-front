@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./GameBox.css";
 import { updateUserGame } from "../../services/loginUserService";
 import PropTypes from "prop-types";
-import { Box, Button, Card, CardMedia, CardContent, Dialog, DialogTitle, DialogContent, DialogActions, FormControl, IconButton, InputLabel, MenuItem, Menu, Select } from "@mui/material";
+import { Box, Button, Card, CardMedia, CardContent, Dialog, DialogTitle, DialogContent, DialogActions, FormControl, Icon, IconButton, InputLabel, MenuItem, Menu, Select, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddIcon from '@mui/icons-material/Add';
@@ -11,9 +11,21 @@ import RemoveIcon from '@mui/icons-material/Remove';
 
 
 const options = [
-  [<AddIcon />, 'Add to list'],
-  [<RateReviewIcon />, 'Add a Review'],
-  [<RemoveIcon />, 'Delete from collection']
+  {
+    id: 1,
+    icon: <AddIcon />,
+    text: 'Add to list'
+  },
+  {
+    id: 1,
+    icon: <RateReviewIcon />,
+    text: 'Add a review'
+  },
+  {
+    id: 1,
+    icon: <RemoveIcon />,
+    text: 'Delete from collection'
+  },
 ]
 
 const GameBox = ({ game }) => {
@@ -124,32 +136,39 @@ const GameBox = ({ game }) => {
             <p className="genre-text">{game.genre}</p>
           </Box>
           <Box>
-          <IconButton
-            aria-label="more"
-            id="long-button"
-            aria-controls={open ? 'long-menu' : undefined}
-            aria-expanded={open ? 'true' : undefined}
-            aria-haspopup="true"
-            onClick={handleClickIcon}
-          >
-            <MoreVertIcon />
-          </IconButton>
-        <Menu
-          className="optionsMenu"
-          MenuListProps={{
-            'aria-labelledby': 'long-button',
-          }}
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleCloseIcon}
-        >
-          {options.map((option) => (
-            <MenuItem key={option} onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
-              {option}
-            </MenuItem>
-          ))}
-        </Menu>
-        </Box>
+            <IconButton
+              aria-label="more"
+              id="long-button"
+              aria-controls={open ? 'long-menu' : undefined}
+              aria-expanded={open ? 'true' : undefined}
+              aria-haspopup="true"
+              onClick={handleClickIcon}
+            >
+              <MoreVertIcon />
+            </IconButton>
+            <Menu
+              sx={
+                { "& .MuiMenu-paper": 
+                  { backgroundColor: "#2A2D33", }, 
+                }
+              }
+              MenuListProps={{
+                'aria-labelledby': 'long-button',
+              }}
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleCloseIcon}
+            >
+              {options.map((option, idx) => (
+                <MenuItem key={idx} onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
+                  <Icon>
+                    {option.icon}
+                  </Icon>
+                  <Typography>{option.text}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
         </Box>
       </CardContent>
     </Card>
