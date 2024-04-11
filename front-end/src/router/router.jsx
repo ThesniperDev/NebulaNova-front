@@ -6,6 +6,7 @@ import Login from "../pages/Login/Login";
 import Games from "../pages/Games/Games";
 import Collection from "../pages/Collection/Collection";
 import Lists from "../pages/Lists/Lists";
+import GamesList from "../pages/GamesList/GamesList";
 
 const router = createBrowserRouter([
   {
@@ -26,10 +27,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/user/lists",
-        element: <Lists />,
         children: [
           {
-            path: ":listId"
+            path: "",
+            element: <Lists />
+          },
+          {
+            path: ":listId",
+            element: <GamesList />,
           }
         ]
       },

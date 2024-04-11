@@ -53,3 +53,12 @@ export const addGameToList = async ({listId, listgamedata}) => {
   })
   return data
 }
+
+export const getAllGamesList = async (listId) => {
+  const { data } = await gamesApi.get(`/gamelist/${listId}`, {
+    headers: {
+      'Authorization': localStorage.getItem('token')
+    }
+  })
+  return data
+}

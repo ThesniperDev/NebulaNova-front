@@ -1,5 +1,6 @@
 import "./Lists.css";
-import { useState, useEffect } from "react"; 
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom"
 import { getAllLists, createList } from "../../services/loginUserService" 
 import PostList from "../../components/PostList/PostList";
 import {
@@ -101,7 +102,13 @@ const Lists = () => {
                       .filter((list) =>
                         list.title.toLowerCase().includes(searchText.toLowerCase())
                       )
-                      .map((list, idx) => <PostList key={idx} list={list}/>)
+                      .map((list, idx) => {
+                        return (
+                          <Link key={idx} to={`${list.id}`}>
+                            <PostList list={list}/>
+                          </Link>
+                        )
+                      })
         }
       </div>
     </section>

@@ -19,7 +19,7 @@ import AddIcon from '@mui/icons-material/Add';
 import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
 
-const GameCard = ({ game }) => {
+const GameCard = ({ game, isList }) => {
   const [gameCollection, setGameCollection] = useState([])
   const [gameIn, setGameIn] = useState(false)
   const [addGame, setAddGame] = useState(false)
@@ -54,14 +54,14 @@ const GameCard = ({ game }) => {
       </div>
       <div className='gameData-container'>
         <p className='game-title'>{game.title}</p>
-        { gameIn ?
+        { !isList && (gameIn ?
             <IconButton>
               <DoneIcon sx={{ color: '#2e7d32' }}/> 
             </IconButton>
           :
             <IconButton onClick={handleClickOpen} className='icconButton'>
               <AddIcon sx={{ color: '#2e7d32' }}/>
-            </IconButton>
+            </IconButton>)
         }
         <Dialog
           open={addGame}
@@ -121,7 +121,8 @@ const GameCard = ({ game }) => {
 }
 
 GameCard.propTypes = {
-  game: PropTypes.object
+  game: PropTypes.object,
+  isList: PropTypes.bool
 }
 
 export default GameCard
