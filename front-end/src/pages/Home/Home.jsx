@@ -15,7 +15,7 @@ const Home = () => {
     <Card sx={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', backgroundColor: 'primary.bg' }}>
       <CardContent>
         <Typography variant="h1" color='white'>
-          EVERYTHING A GAMER NEEDS WITH ONE CLICK
+          EVERYTHING A GAMER NEEDS IN OUR WEB
         </Typography>
         <Typography variant="h5" color="white">
           NebulaNova helps you to organize and follow every step you make on every game you play!

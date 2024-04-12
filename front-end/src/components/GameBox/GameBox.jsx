@@ -217,11 +217,18 @@ const GameBox = ({ game }) => {
                 <DialogContent>
                   <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Lists</InputLabel>
-                    <Select labelId="demo-simple-select-label" id="demo-simple-select" value={listTitle} label="Age" onChange={(e) => setListTitle(e.target.value)}>
+                    <Select 
+                      labelId="demo-simple-select-label" 
+                      id="demo-simple-select" value={listTitle} 
+                      label="Age" 
+                      onChange={(e) => setListTitle(e.target.value)}
+                    >
                       {
                         lists && lists.map((list, idx) => {
                           return (
-                            <MenuItem key={idx} value={list.id} onClick={() => setListId(list.id)}>{list.title}</MenuItem>
+                            <MenuItem key={idx} value={list.id} onClick={() => setListId(list.id)}>
+                              {list.title}
+                            </MenuItem>
                           )
                         })
                       }
