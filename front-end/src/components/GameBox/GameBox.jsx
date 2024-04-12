@@ -50,6 +50,11 @@ const GameBox = ({ game }) => {
     setPlatform("");
   };
 
+  const editReview = () => {
+    navigate(`../user/review/${game.id}`)
+    handleCloseIcon()
+  }
+
   const AddGameToCollection = async () => {
     try {
       const res = await updateUserGame({ gameId: game.id, gamedata: { status, platform } });
@@ -220,10 +225,10 @@ const GameBox = ({ game }) => {
                   </Button>
                 </DialogActions>
               </Dialog>
-              <MenuItem onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
-                <IconButton onClick={() => navigate(`user/review/${game.id}`)}>
+              <MenuItem onClick={editReview} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
+                <Icon>
                   <RateReviewIcon />
-                </IconButton>
+                </Icon>
                 <Typography>Add a review</Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>

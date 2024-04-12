@@ -60,6 +60,13 @@ const router = createBrowserRouter([
       },
       {
         path: "user/review/:idGame",
+        loader: () => {
+          if (localStorage.getItem("token")) {
+            return null;
+          } else {
+            return redirect("/games");
+          }
+        },
         element: <UserReview />
       }
     ],
