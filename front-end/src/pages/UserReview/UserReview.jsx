@@ -30,7 +30,7 @@ const UserReview = () => {
       }else {
         const res = await createReview( review, rateValue, userId, idGame )
         console.log(res)
-        navigate('/user/reviews')
+        navigate('/user/myreviews')
         setRateValue(null)
         setReview("")
         setSuccessText("Your review has been created successfully")
