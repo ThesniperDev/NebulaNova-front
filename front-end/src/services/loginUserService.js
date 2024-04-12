@@ -85,3 +85,21 @@ export const createReview = async ( review, rating, userId, gameId) => {
   })
   return data
 }
+
+export const deleteGameCollection = async (gameId) => {
+  const { data } = await gamesApi.delete(`/gamecollection/${gameId}`, {
+    headers: {
+      'Authorization': localStorage.getItem('token')
+    }
+  })
+  return data
+}
+
+export const deleteList = async (listId) => {
+  const { data } = await gamesApi.delete(`/list/${listId}`, {
+    headers: {
+      'Authorization': localStorage.getItem('token')
+    }
+  })
+  return data
+}

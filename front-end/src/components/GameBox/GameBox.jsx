@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import "./GameBox.css";
-import { updateUserGame, getAllLists, addGameToList } from "../../services/loginUserService";
+import { updateUserGame, getAllLists, addGameToList, deleteGameCollection } from "../../services/loginUserService";
 import PropTypes from "prop-types";
 import { Box, Button, Card, CardMedia, CardContent, Dialog, DialogTitle, DialogContent, DialogActions, FormControl, Icon, IconButton, InputLabel, MenuItem, Menu, Select, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -68,16 +68,25 @@ const GameBox = ({ game }) => {
 
   const AddGameToUserList = async () => {
     try {
-      console.log(listId)
-      console.log(game.title)
       const res = await addGameToList({ listId, listgamedata: { title: game.title } });
       setGameList(res);
     } catch (error) {
       if (error?.response === 501) {
-        alert("The game is already in your collection");
+        alert("The game is already in your List");
       }
     }
   };
+
+  const DeleteGameCollection = async () => {
+    try {
+      const res = await deleteGameCollection(game.id)
+      console.log(res)
+      handleCloseIcon()
+      location.reload()
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const handleClickIcon = (event) => {
     setAnchorEl(event.currentTarget)
@@ -231,7 +240,7 @@ const GameBox = ({ game }) => {
                 </Icon>
                 <Typography>Add a review</Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseIcon} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
+              <MenuItem onClick={DeleteGameCollection} sx={{ backgroundColor: "#2A2D33", color: "#fff", gap: '5px', height: '100%' }}>
                 <Icon>
                   <RemoveIcon />
                 </Icon>
