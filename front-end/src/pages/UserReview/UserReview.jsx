@@ -52,8 +52,8 @@ const UserReview = () => {
         </div>
         <div className="review">
           <label>Write your review:</label>
-          <p className={ errorText ? "visible error" : "hidden"}>{errorText}</p>
-          <p className={ successText ? "visible success" : "hidden"}>{successText}</p>
+          <p className={ errorText && !successText.length ? "visible error" : "hidden"}>{errorText}</p>
+          <p className={ successText && errorText  ? "visible success" : "hidden"}>{successText}</p>
           <textarea
             type="text-"
             className="editor"
