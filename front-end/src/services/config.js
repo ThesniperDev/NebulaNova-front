@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const gamesApi = axios.create({
-  baseURL: 'http://localhost:3000/api'
+  baseURL: 'https://nebulanova.onrender.com/api'
 })
 
 export default gamesApi
