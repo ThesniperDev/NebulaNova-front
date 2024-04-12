@@ -4,9 +4,11 @@ import PropTypes from 'prop-types'
 import {
   Box,
   Card,
-  CardMedia
+  CardMedia,
+  IconButton
 } from "@mui/material"
-import { getAllGamesList } from "../../services/loginUserService"
+import { getAllGamesList, deleteList } from "../../services/loginUserService"
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const PostList = ({ list }) => {
   const [gamesList, setGamesList] = useState([])
@@ -14,6 +16,11 @@ const PostList = ({ list }) => {
   const handleGamesList = async () => {
     const res = await getAllGamesList(list.id)
     setGamesList(res)
+  }
+
+  const DeleteList = async () => {
+    const res = await deleteList(list.id)
+    console.log(res)
   }
 
   useEffect(() => {
@@ -49,7 +56,12 @@ const PostList = ({ list }) => {
         <Card sx={{ width:"100%", height: "352px", backgroundColor: "#353941" }}>
         </Card>
       }
+      <Box sx={{ display: 'flex', width: "100%", justifyContent: "space-between" }}>
         <p className="title-list">{list.title}</p>
+        <IconButton onClick={DeleteList}>
+          <DeleteIcon className='delete-list' sx={{ color: "rgba(255,255,255, 0.7)" }}/>
+        </IconButton>
+      </Box>
     </Box>
   )
 }
