@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import "./PostList.css"
 import PropTypes from 'prop-types'
 import {
@@ -13,6 +14,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const PostList = ({ list }) => {
   const [gamesList, setGamesList] = useState([])
 
+  const navigate = useNavigate()
+
   const handleGamesList = async () => {
     const res = await getAllGamesList(list.id)
     setGamesList(res)
@@ -21,6 +24,7 @@ const PostList = ({ list }) => {
   const DeleteList = async () => {
     const res = await deleteList(list.id)
     console.log(res)
+    navigate('/user/lists')
   }
 
   useEffect(() => {

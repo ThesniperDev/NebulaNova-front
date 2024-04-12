@@ -56,7 +56,7 @@ const Header = () => {
   const onLogout = () => {
     localStorage.clear()
     handleCloseUserMenu()
-    navigate('/games')
+    navigate('/home')
   }
 
   return (

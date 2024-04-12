@@ -16,6 +16,10 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
+        path: "",
+        element: <Home />,
+      },
+      {
         path: "home",
         element: <Home />,
       },
@@ -34,7 +38,7 @@ const router = createBrowserRouter([
           if (localStorage.getItem("token")) {
             return null;
           } else {
-            return redirect("/games");
+            return redirect("/login");
           }
         },
       },
@@ -44,7 +48,7 @@ const router = createBrowserRouter([
           if (localStorage.getItem("token")) {
             return null;
           } else {
-            return redirect("/games");
+            return redirect("/login");
           }
         },
         children: [
@@ -64,7 +68,7 @@ const router = createBrowserRouter([
           if (localStorage.getItem("token")) {
             return null;
           } else {
-            return redirect("/games");
+            return redirect("/login");
           }
         },
         element: <UserReview />
@@ -82,7 +86,7 @@ const router = createBrowserRouter([
       if (!localStorage.getItem("token")) {
         return null;
       } else {
-        return redirect("/");
+        return redirect("/home");
       }
     },
   },
