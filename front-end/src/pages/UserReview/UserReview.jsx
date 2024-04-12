@@ -28,8 +28,9 @@ const UserReview = () => {
       } else  if ( rateValue === 0 ){
         setErrorText("Indicates a rate");
       }else {
-        const res = await createReview( review, rateValue, userId, idGame )  
-        //navigate('/')
+        const res = await createReview( review, rateValue, userId, idGame )
+        console.log(res)
+        navigate('/user/reviews')
         setRateValue(null)
         setReview("")
         setSuccessText("Your review has been created successfully")
@@ -52,8 +53,8 @@ const UserReview = () => {
         </div>
         <div className="review">
           <label>Write your review:</label>
-          <p className={ errorText ? "visible error" : "hidden"}>{errorText}</p>
-          <p className={ successText ? "visible success" : "hidden"}>{successText}</p>
+          <p className={ errorText && !successText.length ? "visible error" : "hidden"}>{errorText}</p>
+          <p className={ successText && errorText  ? "visible success" : "hidden"}>{successText}</p>
           <textarea
             type="text-"
             className="editor"

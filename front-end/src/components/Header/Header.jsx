@@ -23,7 +23,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 
 const pages = ["Home", "Games", "Reviews"];
-const userPages = ["Collection", "Lists"];
+const userPages = ["Collection", "Lists", "MyReviews"];
 const settings = ["Log In", "Sign Up"];
 const settings2 = "Log Out";
 

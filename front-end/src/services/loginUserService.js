@@ -72,6 +72,18 @@ export const getOneGameInfo = async (gameid) =>  {
   return data
 }
 
+export const getAllUserReviews = async () =>  {
+  const { data } = await gamesApi.get(`/usereview/`, {
+    headers: {
+      'Authorization': localStorage.getItem('token')
+    }
+  })
+  console.log(data)
+  return data
+}
+
+
+
 export const createReview = async ( review, rating, userId, gameId) => {
   const { data } = await gamesApi.post(`/usereview/${gameId}`,{
     description: review,

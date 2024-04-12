@@ -9,6 +9,7 @@ import Lists from "../pages/Lists/Lists";
 import GamesList from "../pages/GamesList/GamesList";
 import UserReview from "../pages/UserReview/UserReview"
 import Review from "../pages/Review/Review"
+import MyReviews from "../pages/MyReviews/MyReviews";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,17 @@ const router = createBrowserRouter([
             element: <GamesList />,
           }
         ]
+      },
+      {
+        path: "user/myreviews",
+        element: <MyReviews />,
+        loader: () => {
+          if (localStorage.getItem("token")) {
+            return null;
+          } else {
+            return redirect("/reviews");
+          }
+        },
       },
       {
         path: "user/review/:idGame",

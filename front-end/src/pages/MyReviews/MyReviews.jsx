@@ -1,22 +1,21 @@
 import { useState, useEffect } from "react";
-import "./Review.css";
-import { getAllReview } from "../../services/userServices";
+import "./MyReviews.css";
 import { getAllUserReviews } from "../../services/loginUserService"
 import PostCard from "../../components/PostCard/PostCard"
 
-const Review = () => {
+const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  const handleAllReviewList = async () => {
-    const res = await getAllReview();
+  const handleAllUserReviewList = async () => {
+    const res = await getAllUserReviews();
     setReviews(res);
   };
 
   useEffect(() => {
-    handleAllReviewList();
+    handleAllUserReviewList();
   }, []);
-
+  
   return (
     <section className="reviews-container">
       <div className="filter-container-review">
@@ -40,4 +39,4 @@ const Review = () => {
   );
 };
 
-export default Review;
+export default MyReviews;
