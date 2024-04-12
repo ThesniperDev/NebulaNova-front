@@ -12,9 +12,6 @@ import RemoveIcon from '@mui/icons-material/Remove';
 
 const GameBox = ({ game }) => {
   const [gameUpdate, setGameUpdate] = useState([]);
-  const [lists, setLists] = useState([])
-  const [gameList, setGameList] = useState([])
-  const [listId, setListId] = useState(0)
   const [editGame, setEditGame] = useState(false);
   const [listAdded, setListAdded] = useState(false)
   const [status, setStatus] = useState("");
@@ -24,15 +21,31 @@ const GameBox = ({ game }) => {
   const open = Boolean(anchorEl);
 
   const navigate = useNavigate()
+  
+  const [lists, setLists] = useState([])
+  const [gameList, setGameList] = useState([])
+  const [listId, setListId] = useState(0)
+  
+  const handleLists = async () => {
+    const res = await getAllLists()
+    setLists(res)
+  }
+
+  const AddGameToUserList = async () => {
+    try {
+      const res = await addGameToList({ listId, listgamedata: { title: game.title } });
+      setGameList(res);
+    } catch (error) {
+      if (error?.response === 501) {
+        alert("The game is already in your List");
+      }
+    }
+  };
 
   const handleClickOpen = () => {
     setEditGame(true);
   };
 
-  const handleLists = async () => {
-    const res = await getAllLists()
-    setLists(res)
-  }
 
   const openAddToList = () => {
     setListAdded(true)
@@ -66,16 +79,7 @@ const GameBox = ({ game }) => {
     }
   };
 
-  const AddGameToUserList = async () => {
-    try {
-      const res = await addGameToList({ listId, listgamedata: { title: game.title } });
-      setGameList(res);
-    } catch (error) {
-      if (error?.response === 501) {
-        alert("The game is already in your List");
-      }
-    }
-  };
+  
 
   const DeleteGameCollection = async () => {
     try {
