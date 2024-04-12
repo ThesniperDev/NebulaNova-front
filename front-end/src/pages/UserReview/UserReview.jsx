@@ -28,8 +28,9 @@ const UserReview = () => {
       } else  if ( rateValue === 0 ){
         setErrorText("Indicates a rate");
       }else {
-        const res = await createReview( review, rateValue, userId, idGame )  
-        //navigate('/')
+        const res = await createReview( review, rateValue, userId, idGame )
+        console.log(res)
+        navigate('/user/reviews')
         setRateValue(null)
         setReview("")
         setSuccessText("Your review has been created successfully")
