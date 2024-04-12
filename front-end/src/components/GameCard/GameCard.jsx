@@ -54,7 +54,7 @@ const GameCard = ({ game, isList }) => {
       </div>
       <div className='gameData-container'>
         <p className='game-title'>{game.title}</p>
-        { !isList && (gameIn ?
+        { !isList && localStorage.getItem('token') && (gameIn ?
             <IconButton>
               <DoneIcon sx={{ color: '#2e7d32' }}/> 
             </IconButton>

@@ -31,7 +31,7 @@ const PostCard = ({ review }) => {
           <CardMedia
             sx={{
               height: 328,
-              width: 328,
+              width: 368,
               backgroundSize: "100% 100%",
               backgroundRepeat: "no-repeat",
             }}
