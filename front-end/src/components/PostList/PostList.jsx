@@ -34,16 +34,15 @@ const PostList = ({ list }) => {
   return (
     <Box sx={{ cursor: "pointer" }}>
       {gamesList.length > 0 ?
-        <Card sx={{ display: "flex", backgroundColor: "#353941"}}>
+        <Card sx={{ display: "flex", flexWrap: "nowrap", backgroundColor: "#353941", width: "633.6px", height: "max-content"}}>
           {
-            gamesList && gamesList.map((gameList, idx) => {
-              if (idx < 2) {
+            gamesList && gamesList.slice(0, 3).map((gameList, idx) => {
                 return(
                   <CardMedia
                     key={idx}
                     sx={{
-                      height: 352,
-                      width: 264,
+                      height: 281.6,
+                      width: 211.2,
                       backgroundSize: "contain",
                       backgroundRepeat: "no-repeat",
                     }}
@@ -52,12 +51,11 @@ const PostList = ({ list }) => {
                     }`}
                   />
                 )
-              }
             })
           }
         </Card>
         :
-        <Card sx={{ width:"100%", height: "352px", backgroundColor: "#353941" }}>
+        <Card sx={{ width:"633.6px", height: "281.6px", backgroundColor: "#353941" }}>
         </Card>
       }
       <Box sx={{ display: 'flex', width: "100%", justifyContent: "space-between" }}>
